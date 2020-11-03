@@ -9,19 +9,10 @@ const app = express();
 
 app.use(logger("dev"));
 app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "front/build")));
-// app.use(express.static("front/build"));
-app.use(express.static(path.join(__dirname, "./front/build")));
-app.get("*", (request, response) => {
-  response.sendFile(path.join(__dirname, "./front/build", "index.html"));
-});
 
 app.use("/", indexRouter);
-
-app.listen(PORT, () => {
-  console.log(`Server listening on port ${PORT}.`);
-});
 
 module.exports = app;

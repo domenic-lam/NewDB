@@ -3,11 +3,6 @@ const router = express.Router();
 
 const myDB = require("../db/myPokeMongoDB.js"); //pokedb
 
-// If no API routes are hit, send the React app
-router.use(function(req, res) {
-  res.sendFile(path.join(__dirname, '../client/build/index.html'));
-});
-
 router.get("/player", async (req, res) => {
   const player = await myDB.getPlayer("alex");
   res.json(player); // get player db
