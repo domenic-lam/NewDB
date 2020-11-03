@@ -15,4 +15,12 @@ app.use(express.static(path.join(__dirname, "front/build")));
 
 app.use("/", indexRouter);
 
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("front/build"));
+
+  app.get("*", () => () => {
+    res.sendFile(path.join(__dirname, "front", "build", "index.html")); // relative path
+  })
+}
+
 module.exports = app;
