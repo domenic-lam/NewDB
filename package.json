@@ -7,7 +7,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "heroku-postbuild": "cd front && npm install && npm build && npm start",
-    "start": "nodemon ./bin/www",
+    "server": "nodemon ./bin/www",
     "build": "webpack"
   },
   "engines": {
